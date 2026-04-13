@@ -47,13 +47,12 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#lead">Проверить подключение</a>
-            <a class="btn btn-secondary" href="#tariffs">Посмотреть решения</a>
           </div>
 
           <div class="hero-stats">
             <div class="stat">
               <strong>до 1 Гбит/с</strong>
-              <span>скорость для стабильной работы офиса и торговой точки</span>
+              <span>ско и торговой точки</span>
             </div>
             <div class="stat">
               <strong>24/7</strong>

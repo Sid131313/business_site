@@ -1,0 +1,42 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff6a6a"/>
+      <stop offset="35%" stop-color="#ff2d2d"/>
+      <stop offset="70%" stop-color="#d90d0d"/>
+      <stop offset="100%" stop-color="#8c0000"/>
+    </linearGradient>
+    <linearGradient id="shineGrad" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#7a0000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="innerGlow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset dx="0" dy="1"/>
+      <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix type="matrix" values="
+        0 0 0 0 1
+        0 0 0 0 0.55
+        0 0 0 0 0.55
+        0 0 0 .35 0"/>
+    </filter>
+  </defs>
+
+
+  <g filter="url(#shadow)">
+    <path d="M128 208L340 146C359 141 379 149 388 167L405 199C414 217 406 239 388 248L177 312C157 318 137 309 128 291L111 259C102 241 110 214 128 208Z" fill="url(#bodyGrad)"/>
+    <rect x="316" y="277" width="26" height="96" rx="13" transform="rotate(24 316 277)" fill="#b70a0a"/>
+    <path d="M296 344L360 373" stroke="#9f0000" stroke-width="18" stroke-linecap="round"/>
+    <rect x="345" y="346" width="34" height="96" rx="17" transform="rotate(24 345 346)" fill="url(#bodyGrad)"/>
+    <circle cx="357" cy="195" r="34" fill="#fff" fill-opacity="0.92"/>
+    <circle cx="357" cy="195" r="16" fill="#9b0000" fill-opacity="0.55"/>
+    <path d="M135 219C197 176 281 161 368 172" stroke="white" stroke-opacity="0.32" stroke-width="14" stroke-linecap="round"/>
+    <path d="M398 141C426 159 444 190 444 225" stroke="url(#bodyGrad)" stroke-width="22" stroke-linecap="round"/>
+    <path d="M432 115C472 143 494 184 494 232" stroke="url(#bodyGrad)" stroke-width="22" stroke-linecap="round"/>
+  </g>
+
+</svg>

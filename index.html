@@ -17,11 +17,9 @@
       </a>
 
       <nav class="nav" id="mobileNav">
-        <a href="#solutions">Решения</a>
         <a href="#cases">Для кого</a>
         <a href="#tariffs">Тарифы</a>
         <a href="#steps">Как подключаем</a>
-        <a href="#faq">Вопросы</a>
         <a href="#contacts">Контакты</a>
       </nav>
 
@@ -37,55 +35,85 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-card">
-          <div class="eyebrow">Интернет и цифровые сервисы для бизнеса</div>
-          <h1>Подключение интернета для офисов, магазинов, кафе, складов и ПВЗ</h1>
-          <p class="hero-lead">
-            Стабильный интернет для ежедневной работы бизнеса: кассы, CRM, онлайн‑оплата,
-            видеонаблюдение, телефония, Wi‑Fi для сотрудников и гостей. Подключим быстро,
-            подберём решение под ваш объект и нагрузку.
-          </p>
+          <div class="hero-content">
+            <div class="eyebrow">Интернет и цифровые сервисы для бизнеса</div>
+            <h1>Подключение интернета для офисов, магазинов, кафе, складов и ПВЗ</h1>
+            <p class="hero-lead">
+              Стабильный интернет для ежедневной работы бизнеса: кассы, CRM, онлайн‑оплата,
+              видеонаблюдение, телефония, Wi‑Fi для сотрудников и гостей. Подключим быстро,
+              подберём решение под ваш объект и нагрузку.
+            </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#lead">Проверить подключение</a>
-            <a class="btn btn-secondary" href="#tariffs">Посмотреть решения</a>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#lead">Получить консультацию</a>
+              
+            </div>
           </div>
 
-          <div class="hero-stats">
-            <div class="stat">
-              <strong>до 1 Гбит/с</strong>
-              <span>скорость для стабильной работы офиса и торговой точки</span>
+          <div class="hero-slider" aria-label="Сценарии подключения">
+            <div class="hero-slide active">
+              <h2>Связь, на которой держится бизнес.</h2>
+              <img src="img/office.png" alt="Офис с подключенным интернетом">
             </div>
-            <div class="stat">
-              <strong>24/7</strong>
-              <span>техподдержка и мониторинг критичных сервисов</span>
+            <div class="hero-slide">
+              <h2>Интернет для довольных клиентов</h2>
+              <img src="img/cafe.png" alt="Кафе с Wi-Fi для клиентов">
             </div>
-            <div class="stat">
-              <strong>1–3 дня</strong>
-              <span>средний срок подключения после согласования заявки</span>
+            <div class="hero-slide">
+              <h2>Быстрая работа без задержек</h2>
+              <img src="img/depot.png" alt="Склад с быстрым интернетом">
+            </div>
+            <div class="hero-slide">
+              <h2>Надёжная связь для безопасности</h2>
+              <img src="img/security.png" alt="Система видеонаблюдения">
+            </div>
+            <div class="hero-slide">
+              <h2>Быстрые продажи без сбоев</h2>
+              <img src="img/shop.png" alt="Магазин с устойчивой связью">
+            </div>
+
+            <div class="hero-slider-controls" aria-label="Переключение слайдов">
+              <button class="hero-slider-dot active" type="button" aria-label="Показать слайд 1"></button>
+              <button class="hero-slider-dot" type="button" aria-label="Показать слайд 2"></button>
+              <button class="hero-slider-dot" type="button" aria-label="Показать слайд 3"></button>
+              <button class="hero-slider-dot" type="button" aria-label="Показать слайд 4"></button>
+              <button class="hero-slider-dot" type="button" aria-label="Показать слайд 5"></button>
             </div>
           </div>
+        
+        </div>
+      </div>
+    </section>
+
+    <section class="section address-check-section" id="address-check">
+      <div class="container address-check">
+        <div class="address-check-heading">
+          <div class="eyebrow">Проверка по адресу</div>
+          <h2>Узнайте, доступно ли подключение для вашего бизнеса</h2>
         </div>
 
-        <aside class="hero-side">
-          <div>
-            <div class="mini-card">
-              <h3>Что можно подключить</h3>
-              <p>Интернет, резервный канал, статический IP, Wi‑Fi, телефонию, VPN и видеонаблюдение.</p>
-            </div>
-          </div>
+        <div class="address-check-visual" aria-hidden="true">
+          <img src="img/geo.png" alt="">
+        </div>
 
-          <div>
-            <h2>Решение под задачи бизнеса, а не просто тариф</h2>
-            <ul class="hero-side-list">
-              <li>подберём канал под кассы, терминалы, CRM и видеонаблюдение</li>
-              <li>организуем резервный интернет для критичных точек</li>
-              <li>подключим несколько филиалов в одном договоре</li>
-              <li>поможем со статическим IP, VPN и офисной телефонией</li>
-            </ul>
-          </div>
+        <form class="address-check-form">
+          <label class="field">
+            <span>Имя</span>
+            <input class="input" type="text" name="name" placeholder="Как к вам обращаться" required />
+          </label>
 
-          <a class="btn btn-primary" href="#lead">Получить консультацию</a>
-        </aside>
+          <label class="field">
+            <span>Номер телефона</span>
+            <input class="input" type="tel" name="phone" placeholder="+7 (999) 123-45-67" required />
+          </label>
+
+          <label class="field field-address">
+            <span>Адрес</span>
+            <input class="input" type="text" name="address" placeholder="Город, улица, дом" required />
+          </label>
+
+          <button class="btn btn-primary" type="submit">Проверить</button>
+        </form>
       </div>
     </section>
 
@@ -95,30 +123,30 @@
           <div>
             <h2>Что подключаем бизнесу</h2>
           </div>
-          <p>Собрали базовые продукты, которые чаще всего нужны для офисов, кафе, магазинов, салонов, складов и пунктов выдачи заказов.</p>
+          
         </div>
 
         <div class="solutions-grid">
           <article class="card">
-            <div class="icon">🌐</div>
+            <div class="icon"><img src="img/icon/internet.svg" alt="" aria-hidden="true"></div>
             <h3>Интернет для бизнеса</h3>
             <p>Проводной интернет с подходящей скоростью и SLA для ежедневной работы вашей точки.</p>
           </article>
 
           <article class="card">
-            <div class="icon">🛡️</div>
-            <h3>Резервный канал</h3>
-            <p>Автоматическое переключение на backup‑канал, чтобы кассы и терминалы не простаивали.</p>
+            <div class="icon"><img src="img/icon/cctv.svg" alt="" aria-hidden="true"></div>
+            <h3>Видеонаблюдение</h3>
+            <p>Подключим камеры для офиса, магазина или склада, настроим удалённый доступ и хранение записей.</p>
           </article>
 
           <article class="card">
-            <div class="icon">📞</div>
+            <div class="icon"><img src="img/icon/phone.svg" alt="" aria-hidden="true"></div>
             <h3>Телефония и номер 8‑800</h3>
             <p>Входящие звонки, распределение обращений, запись разговоров и удобная связь с клиентами.</p>
           </article>
 
           <article class="card">
-            <div class="icon">📡</div>
+            <div class="icon"><img src="img/icon/wifi.svg" alt="" aria-hidden="true"></div>
             <h3>Wi‑Fi для сотрудников и гостей</h3>
             <p>Отдельные сети, авторизация, стабильное покрытие внутри офиса, кафе или магазина.</p>
           </article>
@@ -132,7 +160,7 @@
           <div>
             <h2>Для каких объектов подойдёт</h2>
           </div>
-          <p>Ниже типовые сценарии. На практике набор услуг подбирается под площадь, число сотрудников, оборудование и бизнес‑процессы.</p>
+          
         </div>
 
         <div class="cases-grid">
@@ -144,7 +172,7 @@
             </div>
             <ul class="case-points">
               <li>Wi‑Fi для сотрудников</li>
-              <li>Статический IP и VPN</li>
+              <li>Статический IP</li>
               <li>Телефония для отдела продаж</li>
             </ul>
           </article>
@@ -223,11 +251,15 @@
           <div class="feature-list" style="margin-top: 22px;">
             <div class="feature-item" style="background:#f8f9fb;border:1px solid var(--line);color:var(--text);">
               <strong style="color:var(--text)">Статический IP</strong>
-              <span style="color:var(--muted)">для камер, удалённого доступа, серверов и VPN</span>
+              <span style="color:var(--muted)">для камер, удалённого доступа, серверов</span>
             </div>
             <div class="feature-item" style="background:#f8f9fb;border:1px solid var(--line);color:var(--text);">
               <strong style="color:var(--text)">Отдельный Wi‑Fi контур</strong>
               <span style="color:var(--muted)">для сотрудников и отдельный для гостей</span>
+            </div>
+            <div class="feature-item" style="background:#f8f9fb;border:1px solid var(--line);color:var(--text);">
+              <strong style="color:var(--text)">Подключение ТВ</strong>
+<span style="color:var(--muted)">цифровое телевидение для зон ожидания, кафе, гостиниц и офисов</span>
             </div>
             <div class="feature-item" style="background:#f8f9fb;border:1px solid var(--line);color:var(--text);">
               <strong style="color:var(--text)">Телефония</strong>
@@ -248,7 +280,7 @@
           <div>
             <h2>Почему бизнес выбирает такие решения</h2>
           </div>
-          <p>Главный запрос у бизнеса — не просто цена, а стабильность и предсказуемость работы сервисов каждый день.</p>
+          
         </div>
 
         <div class="benefits-grid">
@@ -345,7 +377,7 @@
             <ul>
               <li>Интернет до 1 Гбит/с</li>
               <li>Резервный канал</li>
-              <li>VPN / удалённый доступ</li>
+              <li>Удалённый доступ</li>
               <li>Приоритетная поддержка</li>
             </ul>
             <a class="btn btn-secondary" href="#lead">Получить расчёт</a>

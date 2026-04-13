@@ -204,6 +204,7 @@ body {
       background: #fff;
       border-color: var(--line);
       color: var(--text);
+      width: 100%;
     }
 
     .btn-secondary:hover {
@@ -213,6 +214,8 @@ body {
 
     .hero {
       padding: 22px 0 24px;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero-grid {
@@ -231,16 +234,56 @@ body {
       position: relative;
       overflow: hidden;
     }
+    .hero-card{
+      padding: 0px;
+    }
+
+    .hero-card {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+      gap: 28px;
+      align-items: stretch;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: -22px;
+      bottom: -24px;
+      left: 50%;
+      width: 100vw;
+      transform: translateX(-50%);
+      background:
+        linear-gradient(135deg, rgba(227, 6, 19, 0.055) 0 12%, transparent 12% 100%),
+        linear-gradient(315deg, transparent 0 74%, rgba(46, 52, 59, 0.045) 74% 86%, transparent 86% 100%),
+        linear-gradient(180deg, #fbfcfd 0%, #eef2f5 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
 
     .hero-card::after {
       content: "";
       position: absolute;
-      right: -80px;
-      top: -80px;
-      width: 280px;
-      height: 280px;
-      background: radial-gradient(circle, rgba(227, 6, 19, 0.12) 0%, rgba(227, 6, 19, 0) 72%);
+      right: 6%;
+      top: 34px;
+      width: 210px;
+      height: 42px;
+      background: rgba(227, 6, 19, 0.07);
+      transform: rotate(-8deg);
+      z-index: 0;
       pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
     }
 
     .eyebrow {
@@ -279,6 +322,76 @@ body {
       margin-top: 28px;
     }
 
+    .hero-slider {
+      position: relative;
+      z-index: 1;
+      min-height: 460px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #17181c;
+      border: 1px solid rgba(23, 24, 28, 0.12);
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      pointer-events: none;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .hero-slide h2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      margin: 0;
+      padding: 24px 24px 56px;
+      color: #fff;
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .hero-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-slider-controls {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 22px;
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .hero-slider-dot {
+      width: 34px;
+      height: 4px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.45);
+      cursor: pointer;
+    }
+
+    .hero-slider-dot.active {
+      background: #fff;
+    }
+
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -303,6 +416,81 @@ body {
     .stat span {
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .address-check-section {
+      padding-top: 10px;
+    }
+
+    .address-check {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+      column-gap: 28px;
+      row-gap: 24px;
+      align-items: center;
+      padding: 30px 0 30px 30px;
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, #ffffff 0%, #f3f5f8 62%, #fff0f1 100%);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .address-check::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -150px auto;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(227, 6, 19, 0.16) 0%, rgba(227, 6, 19, 0) 68%);
+      pointer-events: none;
+    }
+
+    .address-check-heading {
+      position: relative;
+      z-index: 1;
+    }
+
+    .address-check h2 {
+      margin: 0 0 22px;
+      max-width: 720px;
+      font-size: clamp(30px, 4.2vw, 40px);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+    }
+
+    .address-check-form {
+      display: grid;
+      grid-template-columns: minmax(150px, 1fr) minmax(170px, 1fr) minmax(220px, 1.25fr) auto;
+      gap: 14px;
+      align-items: end;
+      grid-column: 1 / -1;
+      padding-right: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .address-check-form .btn {
+      min-width: 150px;
+      min-height: 56px;
+    }
+
+    .address-check-visual {
+      position: relative;
+      z-index: 1;
+      
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .address-check-visual img {
+      width: min(100%, 300px);
+      max-height: 280px;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 26px rgba(17, 17, 17, 0.14));
     }
 
     .hero-side {
@@ -400,6 +588,16 @@ body {
       margin-bottom: 18px;
     }
 
+    .solutions-grid .icon {
+      margin: 0 auto 18px;
+    }
+
+    .solutions-grid .icon img {
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
     .card h3 {
       margin: 0 0 10px;
       font-size: 22px;
@@ -420,7 +618,7 @@ body {
       min-height: 280px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      
       background: linear-gradient(180deg, #ffffff 0%, #f7f7f8 100%);
     }
 
@@ -918,9 +1116,36 @@ body {
 
       .hero-grid,
       .features-grid,
+      .address-check,
       .lead-box,
       .contacts-grid {
         grid-template-columns: 1fr;
+      }
+
+      .address-check-form {
+        grid-template-columns: repeat(2, 1fr);
+        padding-right: 30px;
+      }
+
+      .address-check-form .field-address {
+        grid-column: 1 / -1;
+      }
+
+      .address-check-form .btn {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+
+      .address-check-visual {
+        min-height: 220px;
+      }
+
+      .hero-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-slider {
+        min-height: 380px;
       }
 
       .solutions-grid,
@@ -942,6 +1167,7 @@ body {
 
       .hero-card,
       .hero-side,
+      .address-check,
       .lead-box,
       .feature-panel,
       .contact-box,
@@ -955,8 +1181,31 @@ body {
       .steps-grid,
       .benefits-grid,
       .tariffs-grid,
+      .address-check-form,
       .form-grid {
         grid-template-columns: 1fr;
+      }
+
+      .address-check {
+        gap: 18px;
+        padding: 24px;
+      }
+
+      .address-check-form {
+        padding-right: 0;
+      }
+
+      .address-check h2 {
+        font-size: 32px;
+      }
+
+      .address-check-visual {
+        min-height: 180px;
+        justify-content: center;
+      }
+
+      .address-check-visual img {
+        max-height: 210px;
       }
 
       .section-head {
@@ -979,6 +1228,16 @@ body {
 
       .hero h1 {
         font-size: 40px;
+      }
+
+      .hero-slider {
+        min-height: 320px;
+        border-radius: 20px;
+      }
+
+      .hero-slide h2 {
+        padding: 20px 20px 48px;
+        font-size: 28px;
       }
 
       .faq-question {

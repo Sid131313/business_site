@@ -23,6 +23,37 @@
       });
     });
 
+    document.querySelectorAll('.city-dropdown').forEach(dropdown => {
+      const cityButton = dropdown.querySelector('.city-button');
+      const cityOptions = dropdown.querySelectorAll('.city-menu button');
+
+      if (!cityButton) return;
+
+      cityButton.addEventListener('click', () => {
+        const isExpanded = dropdown.classList.toggle('open');
+        cityButton.setAttribute('aria-expanded', String(isExpanded));
+      });
+
+      cityOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          cityButton.textContent = option.textContent;
+          dropdown.classList.remove('open');
+          cityButton.setAttribute('aria-expanded', 'false');
+          option.blur();
+        });
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      document.querySelectorAll('.city-dropdown.open').forEach(dropdown => {
+        if (dropdown.contains(event.target)) return;
+
+        const cityButton = dropdown.querySelector('.city-button');
+        dropdown.classList.remove('open');
+        if (cityButton) cityButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+
     const heroSlider = document.querySelector('.hero-slider');
 
     if (heroSlider) {
@@ -65,22 +96,54 @@
       startSlider();
     }
 
-    const leadForm = document.getElementById('leadForm');
-    const formResult = document.getElementById('formResult');
+    const escapeHtml = (value) => String(value)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
 
-    if (leadForm && formResult) {
-      leadForm.addEventListener('submit', (event) => {
-        event.preventDefault();
+    const normalizeAssetPath = (path) => {
+      if (!path) return '';
+      return path.startsWith('/') ? path : `/${path}`;
+    };
 
-        const formData = new FormData(leadForm);
-        const payload = Object.fromEntries(formData.entries());
-        console.log('Форма отправлена:', payload);
+    const createBlogCard = (post) => {
+      const image = normalizeAssetPath(post.image);
+      return `
+        <a class="blog-card" href="${escapeHtml(post.url)}">
+          <span class="blog-card-image">
+            <img src="${escapeHtml(image)}" width="720" height="420" loading="lazy" alt="${escapeHtml(post.imageAlt || post.title)}">
+          </span>
+          <span class="blog-card-body">
+            <span class="blog-card-meta">${escapeHtml(post.category)}</span>
+            <span class="blog-card-title">${escapeHtml(post.title)}</span>
+            <span class="blog-card-excerpt">${escapeHtml(post.excerpt)}</span>
+            <span class="blog-card-footer">
+              <span>${escapeHtml(post.displayDate)}</span>
+              <span>${escapeHtml(post.readingTime)}</span>
+            </span>
+            <span class="blog-card-link">Читать статью →</span>
+          </span>
+        </a>
+      `;
+    };
 
-        formResult.style.display = 'block';
-        leadForm.reset();
-        window.scrollTo({
-          top: leadForm.offsetTop - 120,
-          behavior: 'smooth'
-        });
+    const blogPosts = Array.isArray(window.blogPosts) ? window.blogPosts : [];
+
+    if (blogPosts.length) {
+      document.querySelectorAll('[data-blog-list]').forEach(list => {
+        const limit = Number(list.dataset.blogLimit);
+        const posts = Number.isFinite(limit) && limit > 0 ? blogPosts.slice(0, limit) : blogPosts;
+        list.innerHTML = posts.map(createBlogCard).join('');
+      });
+
+      document.querySelectorAll('[data-related-posts]').forEach(list => {
+        const currentSlug = list.dataset.currentSlug;
+        const relatedPosts = blogPosts
+          .filter(post => post.slug !== currentSlug)
+          .slice(0, 3);
+
+        list.innerHTML = relatedPosts.map(createBlogCard).join('');
       });
     }

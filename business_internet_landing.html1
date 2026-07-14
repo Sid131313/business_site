@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -26,7 +26,7 @@
       </nav>
 
       <div class="topbar-actions">
-        <a class="phone-link" href="tel:+78001234567">8 800 123-45-67</a>
+        <a class="phone-link" href="tel:+74959899859">+7 (495) 989-98-59</a>
         <a class="btn btn-secondary" href="#lead">Оставить заявку</a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Открыть меню">☰</button>
       </div>
@@ -292,7 +292,6 @@
           <div>
             <h2>Примеры решений</h2>
           </div>
-          <p>Это демонстрационные пакеты для структуры страницы. Потом их можно заменить на реальные тарифы и условия вашего проекта.</p>
         </div>
 
         <div class="tariffs-grid">
@@ -449,8 +448,8 @@
             </div>
 
             <label class="checkbox">
-              <input type="checkbox" checked required />
-              <span>Я соглашаюсь на обработку персональных данных и принимаю политику конфиденциальности.</span>
+              <input type="checkbox" name="personal_data_consent" value="1" checked required />
+              <span>Нажимая кнопку «Отправить», я даю согласие на обработку моих персональных данных в соответствии с <a href="/privacy-policy/">Политикой обработки персональных данных</a>.</span>
             </label>
 
             <button class="btn btn-primary" type="submit" style="width:100%; margin-top:16px;">Отправить заявку</button>
@@ -467,7 +466,6 @@
           <div>
             <h2>Частые вопросы</h2>
           </div>
-          <p>Блок нужен и для удобства пользователя, и для SEO‑структуры страницы.</p>
         </div>
 
         <div class="faq-grid">
@@ -524,7 +522,7 @@
           <div class="contact-list">
             <div class="contact-item">
               <span>Отдел продаж</span>
-              <a href="tel:+78001234567">8 800 123-45-67</a>
+              <a href="tel:+74959899859">+7 (495) 989-98-59</a>
             </div>
             <div class="contact-item">
               <span>Email</span>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Домашний интернет</title>
   <meta name="description" content="Домашний интернет для квартир и частных домов: проверка адреса, подбор тарифа, Wi-Fi, ТВ и помощь с роутером." />
+  <link rel="canonical" href="https://inetseti.ru/" />
   <link rel="icon" type="image/svg+xml" href="img/icon/moi-seti-favicon.svg">
   <link rel="stylesheet" href="styles.css">
   <script src="data/blog-posts.js" defer></script>
@@ -25,19 +26,19 @@
         <div class="city-dropdown">
           <button class="city-button" type="button" aria-haspopup="true" aria-expanded="false">Москва</button>
           <div class="city-menu" aria-label="Выбор города">
-            <button type="button">Москва</button>
-            <button type="button">Санкт-Петербург</button>
-            <button type="button">Казань</button>
-            <button type="button">Самара</button>
-            <button type="button">Екатеринбург</button>
-            <button type="button">Тюмень</button>
-            <button type="button">Набережные Челны</button>
-            <button type="button">Уфа</button>
-            <button type="button">Нижний Тагил</button>
-            <button type="button">Новый Уренгой</button>
-            <button type="button">Йошкар-Ола</button>
-            <button type="button">Оренбург</button>
-            <button type="button">Омск</button>
+            <a href="/moskva/">Москва</a>
+            <a href="/sankt-peterburg/">Санкт-Петербург</a>
+            <a href="/kazan/">Казань</a>
+            <a href="/samara/">Самара</a>
+            <a href="/ekaterinburg/">Екатеринбург</a>
+            <a href="/tyumen/">Тюмень</a>
+            <a href="/naberezhnye-chelny/">Набережные Челны</a>
+            <a href="/ufa/">Уфа</a>
+            <a href="/nizhniy-tagil/">Нижний Тагил</a>
+            <a href="/novyy-urengoy/">Новый Уренгой</a>
+            <a href="/yoshkar-ola/">Йошкар-Ола</a>
+            <a href="/orenburg/">Оренбург</a>
+            <a href="/omsk/">Омск</a>
           </div>
         </div>
       </nav>
@@ -115,6 +116,7 @@
         </div>
 
         <form class="address-check-form">
+          <input type="hidden" name="city" value="Москва" />
           <label class="field">
             <span>Имя</span>
             <input class="input" type="text" name="name" placeholder="Как к вам обращаться" required />
@@ -154,7 +156,6 @@
           <div>
             <h2>Примеры тарифов</h2>
           </div>
-          <p>Это демонстрационные пакеты для структуры страницы. Потом их можно заменить на реальные тарифы, скорости и условия подключения.</p>
         </div>
 
         <div class="tariffs-grid">
@@ -279,32 +280,44 @@
 
         <div class="benefits-grid">
           <div class="benefit">
-            <div class="benefit-mark">01</div>
-            <div>
+            <div class="benefit-visual">
+              <img src="img/benefits/all-devices-online.png" alt="Белый Wi‑Fi роутер с красным индикатором" loading="lazy">
+              <div class="benefit-mark">01</div>
+            </div>
+            <div class="benefit-content">
               <h3>Все устройства онлайн</h3>
               <p>Ноутбуки, смартфоны, телевизоры, приставки и умные устройства работают одновременно без лишних зависаний.</p>
             </div>
           </div>
 
           <div class="benefit">
-            <div class="benefit-mark">02</div>
-            <div>
+            <div class="benefit-visual">
+              <img src="img/benefits/family-comfort.png" alt="Белая медиаприставка с красным индикатором" loading="lazy">
+              <div class="benefit-mark">02</div>
+            </div>
+            <div class="benefit-content">
               <h3>Комфорт для всей семьи</h3>
               <p>Можно смотреть фильмы, учиться, работать и играть в одно время, не деля интернет по расписанию.</p>
             </div>
           </div>
 
           <div class="benefit">
-            <div class="benefit-mark">03</div>
-            <div>
+            <div class="benefit-visual">
+              <img src="img/benefits/clear-price.png" alt="Белый ценник с красным акцентом" loading="lazy">
+              <div class="benefit-mark">03</div>
+            </div>
+            <div class="benefit-content">
               <h3>Понятная стоимость</h3>
               <p>Можно выбрать базовый тариф и добавить роутер, ТВ или более высокую скорость при необходимости.</p>
             </div>
           </div>
 
           <div class="benefit">
-            <div class="benefit-mark">04</div>
-            <div>
+            <div class="benefit-visual">
+              <img src="img/benefits/scenario-speed.png" alt="Белый игровой контроллер с красным акцентом" loading="lazy">
+              <div class="benefit-mark">04</div>
+            </div>
+            <div class="benefit-content">
               <h3>Подбор под сценарий</h3>
               <p>Для видеозвонков, онлайн‑кинотеатров и игр нужны разные скорости. Мы учитываем реальное использование.</p>
             </div>
@@ -373,7 +386,6 @@
           <div>
             <h2>Частые вопросы</h2>
           </div>
-          <p>Блок нужен и для удобства пользователя, и для SEO‑структуры страницы.</p>
         </div>
 
         <div class="faq-grid">
@@ -421,6 +433,40 @@
     </section>
 
   </main>
+<section class="modal" aria-hidden="true" data-application-modal>
+  <div class="modal-backdrop" data-close-application></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="application-title">
+    <button class="modal-close" type="button" aria-label="Закрыть" data-close-application>×</button>
+    <h2 id="application-title">Заявка на подключение</h2>
+    <p>Оставьте контакты, и мы уточним доступные варианты подключения.</p>
+    <form class="application-form">
+      <input type="hidden" name="provider" value="">
+      <input type="hidden" name="tariff" value="">
+      <input type="hidden" name="price" value="">
+      <input type="hidden" name="city" value="">
+      <input type="hidden" name="tariff_type" value="">
+      <input type="hidden" name="category" value="">
+      <label class="field">
+        <span>Город</span>
+        <input class="input" type="text" value="Москва" readonly data-current-city>
+      </label>
+      <label class="field">
+        <span>Имя</span>
+        <input class="input" type="text" name="name" required>
+      </label>
+      <label class="field">
+        <span>Телефон</span>
+        <input class="input" type="tel" name="phone" required>
+      </label>
+      <button class="btn btn-primary" type="submit">Отправить заявку</button>
+    </form>
+    <div class="application-success" hidden data-application-success>
+      <h3>Заявка отправлена</h3>
+      <p>Спасибо! Мы скоро свяжемся с вами и подскажем условия подключения в городе <span data-current-city>Москва</span>.</p>
+      <button class="btn btn-primary" type="button" data-close-application>Хорошо</button>
+    </div>
+  </div>
+</section>
 <footer class="footer">
     <div class="container footer-inner">
       <div>© 2026 ИнетСети. Домашний интернет и цифровые сервисы.</div>

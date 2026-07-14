@@ -62,7 +62,7 @@
       </div>
     </nav>
     <div class="topbar-actions">
-      <a class="phone-link" href="tel:+78001234567">8 800 123-45-67</a>
+      <a class="phone-link" href="tel:+74959899859">+7 (495) 989-98-59</a>
       <a class="btn btn-secondary" href="/#address-check">Подключить</a>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Открыть меню">☰</button>
     </div>
@@ -126,6 +126,40 @@
   </section>
 </main>
 
+<section class="modal" aria-hidden="true" data-application-modal>
+  <div class="modal-backdrop" data-close-application></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="application-title">
+    <button class="modal-close" type="button" aria-label="Закрыть" data-close-application>×</button>
+    <h2 id="application-title">Заявка на подключение</h2>
+    <p>Оставьте контакты, и мы уточним доступные варианты подключения.</p>
+    <form class="application-form">
+      <input type="hidden" name="provider" value="">
+      <input type="hidden" name="tariff" value="">
+      <input type="hidden" name="price" value="">
+      <input type="hidden" name="city" value="">
+      <input type="hidden" name="tariff_type" value="">
+      <input type="hidden" name="category" value="">
+      <label class="field">
+        <span>Город</span>
+        <input class="input" type="text" value="Москва" readonly data-current-city>
+      </label>
+      <label class="field">
+        <span>Имя</span>
+        <input class="input" type="text" name="name" required>
+      </label>
+      <label class="field">
+        <span>Телефон</span>
+        <input class="input" type="tel" name="phone" required>
+      </label>
+      <button class="btn btn-primary" type="submit">Отправить заявку</button>
+    </form>
+    <div class="application-success" hidden data-application-success>
+      <h3>Заявка отправлена</h3>
+      <p>Спасибо! Мы скоро свяжемся с вами и подскажем условия подключения в городе <span data-current-city>Москва</span>.</p>
+      <button class="btn btn-primary" type="button" data-close-application>Хорошо</button>
+    </div>
+  </div>
+</section>
 <footer class="footer"><div class="container footer-inner"><div>© 2026 ИнетСети. Домашний интернет и цифровые сервисы.</div><div>Квартиры • Частные дома • ТВ • Wi‑Fi • Поддержка</div></div></footer>
 </body>
 </html>

@@ -1,0 +1,114 @@
+{
+  "updated_at": "2026-07-14T00:00:00+03:00",
+  "cities": {
+    "moskva": {
+      "name": "Москва",
+      "home": {
+        "internet_tv": [
+          {
+            "provider": "justconnect",
+            "name": "Дом 300 + ТВ",
+            "category": "internet_tv",
+            "price": 850,
+            "old_price": 990,
+            "badge": "Акция",
+            "speed": "300 Мбит/с",
+            "speed_mbps": 300,
+            "tv_channels": "180+ каналов",
+            "options": ["Wi‑Fi роутер", "Онлайн-кинотеатр", "ТВ-приставка"],
+            "conditions": "Скидка действует при подключении в течение 30 дней.",
+            "description": "Интернет и телевидение для семьи и нескольких устройств."
+          },
+          {
+            "provider": "justconnect",
+            "name": "Дом 500 + ТВ",
+            "category": "internet_tv",
+            "price": 1050,
+            "speed": "500 Мбит/с",
+            "speed_mbps": 500,
+            "tv_channels": "220+ каналов",
+            "options": ["Wi‑Fi роутер", "4K-каналы", "ТВ-приставка"],
+            "description": "Максимальная скорость и расширенный пакет телевидения."
+          }
+        ],
+        "internet": [
+          {
+            "provider": "justconnect",
+            "name": "Дом 100",
+            "category": "internet",
+            "price": 500,
+            "badge": "Хит продаж",
+            "speed": "100 Мбит/с",
+            "speed_mbps": 100,
+            "options": ["Wi‑Fi роутер", "Поддержка по телефону", "Подходит для 3-4 устройств"],
+            "description": "Базовый тариф для повседневного дома и квартиры."
+          },
+          {
+            "provider": "justconnect",
+            "name": "Дом 300",
+            "category": "internet",
+            "price": 750,
+            "speed": "300 Мбит/с",
+            "speed_mbps": 300,
+            "options": ["Wi‑Fi роутер", "Можно добавить ТВ", "Для 5-8 устройств"],
+            "description": "Для фильмов, видеосвязи и нескольких пользователей."
+          },
+          {
+            "provider": "justconnect",
+            "name": "Дом 500",
+            "category": "internet",
+            "price": 950,
+            "speed": "500 Мбит/с",
+            "speed_mbps": 500,
+            "options": ["Wi‑Fi роутер", "Приоритетная поддержка", "Для игр и 4K"],
+            "description": "Высокая скорость для активного использования дома."
+          }
+        ]
+      },
+      "business": [
+        {
+          "provider": "justconnect",
+          "name": "Бизнес Старт",
+          "category": "business",
+          "price": 1900,
+          "speed": "200 Мбит/с",
+          "speed_mbps": 200,
+          "options": ["Wi‑Fi для сотрудников", "Подключение кассы", "Техподдержка"],
+          "description": "Подойдёт для ПВЗ, салонов и небольших офисов."
+        },
+        {
+          "provider": "justconnect",
+          "name": "Бизнес Офис",
+          "category": "business",
+          "price": 3500,
+          "speed": "500 Мбит/с",
+          "speed_mbps": 500,
+          "options": ["Статический IP", "IP-телефония", "Wi‑Fi для офиса"],
+          "description": "Для командной работы, CRM и облачных сервисов."
+        },
+        {
+          "provider": "justconnect",
+          "name": "Бизнес Про",
+          "category": "business",
+          "price": 6900,
+          "speed": "1 Гбит/с",
+          "speed_mbps": 1000,
+          "options": ["Резервный канал", "Удалённый доступ", "Приоритетная поддержка"],
+          "description": "Для кафе, магазинов, складов и сетевых объектов."
+        }
+      ]
+    },
+    "sankt-peterburg": { "name": "Санкт-Петербург", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "kazan": { "name": "Казань", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "samara": { "name": "Самара", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "ekaterinburg": { "name": "Екатеринбург", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "tyumen": { "name": "Тюмень", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "naberezhnye-chelny": { "name": "Набережные Челны", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "ufa": { "name": "Уфа", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "nizhniy-tagil": { "name": "Нижний Тагил", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "novyy-urengoy": { "name": "Новый Уренгой", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "yoshkar-ola": { "name": "Йошкар-Ола", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "orenburg": { "name": "Оренбург", "home": { "internet_tv": [], "internet": [] }, "business": [] },
+    "omsk": { "name": "Омск", "home": { "internet_tv": [], "internet": [] }, "business": [] }
+  }
+}

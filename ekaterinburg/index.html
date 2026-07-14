@@ -1,0 +1,26 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Домашний интернет в Екатеринбурге — тарифы и подключение</title><meta name="description" content="Подключение домашнего интернета и ТВ в Екатеринбурге. Актуальные тарифы, проверка адреса и помощь с выбором провайдера."><link rel="canonical" href="https://inetseti.ru/ekaterinburg/"><link rel="stylesheet" href="../styles.css"><script src="../script.js" defer></script></head><body><header class="topbar"><div class="container topbar-inner"><a class="brand" href="/">ИнетСети</a><nav class="nav" id="mobileNav"><a href="/">Главная</a><span class="city-button">Екатеринбург</span></nav></div></header><main><section class="hero"><div class="container hero-grid"><div class="hero-card"><div class="hero-content"><h1>Домашний интернет и ТВ в Екатеринбурге</h1><p class="hero-lead">Подберём тариф и проверим возможность подключения по вашему адресу.</p><a class="btn btn-primary" href="#address-check">Проверить адрес</a></div></div></div></section><section class="section" id="tariffs"><div class="container"><h2>Тарифы домашнего интернета в Екатеринбурге</h2><div class="tariffs-grid" data-home-tariffs data-home-category="internet_tv"></div></div></section><section class="section" id="address-check"><div class="container"><form class="address-check-form"><input type="hidden" name="city" value="Екатеринбург"><label class="field"><span>Телефон</span><input class="input" name="phone" required></label><button class="btn btn-primary">Отправить заявку</button></form></div></section></main><section class="modal" aria-hidden="true" data-application-modal>
+  <div class="modal-backdrop" data-close-application></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="application-title">
+    <button class="modal-close" type="button" aria-label="Закрыть" data-close-application>×</button>
+    <h2 id="application-title">Заявка на подключение</h2>
+    <p>Оставьте контакты, и мы уточним доступные варианты подключения.</p>
+    <form class="application-form">
+      <input type="hidden" name="provider" value="">
+      <input type="hidden" name="tariff" value="">
+      <input type="hidden" name="price" value="">
+      <input type="hidden" name="city" value="">
+      <input type="hidden" name="tariff_type" value="">
+      <input type="hidden" name="category" value="">
+      <label class="field"><span>Город</span><input class="input" type="text" value="Москва" readonly data-current-city></label>
+      <label class="field"><span>Имя</span><input class="input" type="text" name="name" required></label>
+      <label class="field"><span>Телефон</span><input class="input" type="tel" name="phone" required></label>
+      <button class="btn btn-primary" type="submit">Отправить заявку</button>
+    </form>
+    <div class="application-success" hidden data-application-success>
+      <h3>Заявка отправлена</h3>
+      <p>Спасибо! Мы скоро свяжемся с вами и подскажем условия подключения в городе <span data-current-city>Москва</span>.</p>
+      <button class="btn btn-primary" type="button" data-close-application>Хорошо</button>
+    </div>
+  </div>
+</section>
+</body></html>

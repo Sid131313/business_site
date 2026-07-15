@@ -549,8 +549,14 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div>© 2026 Business Connect. Интернет и сервисы для бизнеса.</div>
-      <div>Офисы • Магазины • Кафе • ПВЗ • Склады</div>
+      <a class="footer-brand" href="index.html#top" aria-label="ИнетСети — на главную">
+        <img src="img/icon/moi-seti-icon.svg" alt="ИнетСети">
+        <span>ИнетСети</span>
+      </a>
+      <div class="footer-legal">
+        <p>Посещая сайт megafon-connect.ru, вы предоставляете согласие на обработку данных, включая cookies и иные технические данные, на условиях, указанных в <a href="https://megafon-connect.ru/privacy.html#privacy-policy">политике конфиденциальности</a>.</p>
+        <p>Отправляя заявку, пользователь принимает <a href="https://megafon-connect.ru/privacy.html#privacy-policy">политику конфиденциальности</a> и даёт <a href="https://megafon-connect.ru/privacy.html#personal-data-consent">согласие на обработку персональных данных</a>.</p>
+      </div>
     </div>
   </footer>
 

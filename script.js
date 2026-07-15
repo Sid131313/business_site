@@ -3,7 +3,8 @@
 
   const CITY_KEY = 'inetseti-city';
   const BUSINESS_KEY = 'inetseti-business-mode';
-  const DEFAULT_CITY = 'Москва';
+  const MAX_MESSENGER_URL = 'https://max.ru/u/f9LHodD0cOJbGuUnkNs5vbebn5z8wm-2vX0cb0RUgSHp25MZMmCRiGww1hg';
+  const DEFAULT_CITY = 'Казань';
   const CITY_OPTIONS = [
     'Москва',
     'Санкт-Петербург',
@@ -88,9 +89,9 @@
   const mode = () => (storage && storage.getItem(BUSINESS_KEY) === 'business') ? 'business' : 'home';
   const setCity = (value) => storage && CITY_OPTIONS.includes(value) && storage.setItem(CITY_KEY, value);
   const setMode = (value) => storage && storage.setItem(BUSINESS_KEY, value === 'business' ? 'business' : 'home');
-  const slug = (value) => CITY_TO_SLUG[value] || 'moskva';
+  const slug = (value) => CITY_TO_SLUG[value] || 'kazan';
 
-  const cityPhone = (value) => PHONE_BY_CITY_SLUG[slug(value)] || PHONE_BY_CITY_SLUG.moskva;
+  const cityPhone = (value) => PHONE_BY_CITY_SLUG[slug(value)] || PHONE_BY_CITY_SLUG.kazan;
 
   const addPersonalDataConsent = () => {
     document.querySelectorAll('form').forEach((form) => {
@@ -111,11 +112,95 @@
   };
   const phoneHref = (value) => `tel:${cityPhone(value).replace(/[^\d+]/g, '')}`;
 
+  const maxMessengerLink = (className = '') => `
+    <a class="max-messenger-link ${className}" href="${MAX_MESSENGER_URL}" target="_blank" rel="noopener noreferrer" aria-label="Написать в MAX">
+      <img src="/img/icon/max.svg" width="32" height="32" alt="MAX">
+      <span>Написать в MAX</span>
+    </a>
+  `;
+
+  const ensureMessengerContacts = () => {
+    document.querySelectorAll('[data-application-modal] .application-form').forEach(form => {
+      const nextElement = form.nextElementSibling;
+      if (!nextElement?.classList.contains('modal-form-messenger-link')) {
+        form.insertAdjacentHTML('afterend', maxMessengerLink('modal-messenger-link modal-form-messenger-link'));
+      }
+    });
+
+    document.querySelectorAll('[data-application-success]').forEach(success => {
+      if (!success.querySelector('[data-success-phone]')) {
+        success.innerHTML = `
+          <h3>Мы уже получили вашу заявку и начали обработку</h3>
+          <div class="application-success-copy">
+            <p><strong>📞 Позвоним вам в течение 5–15 минут в рабочее время.</strong></p>
+            <p><strong>📵 Просьба временно отключить антиспам и блокировки, чтобы мы могли до вас дозвониться.</strong></p>
+            <p><strong>Если не удалось связаться — напишите нам в удобный мессенджер или перезвоните по телефону: <a class="success-phone-link" data-success-phone></a>.</strong></p>
+          </div>
+          ${maxMessengerLink('modal-messenger-link')}
+          <button class="btn btn-primary" type="button" data-close-application>Хорошо</button>
+        `;
+      }
+    });
+
+    document.querySelectorAll('[data-application-success]').forEach(success => {
+      const closeButton = success.querySelector('[data-close-application]');
+      if (closeButton) {
+        closeButton.outerHTML = '<a class="btn btn-primary" href="/">Вернуться на главный экран</a>';
+      }
+    });
+
+    document.querySelectorAll('.footer-inner').forEach(footer => {
+      if (!footer.querySelector('.footer-messenger-link')) {
+        footer.insertAdjacentHTML('beforeend', maxMessengerLink('footer-messenger-link'));
+      }
+    });
+  };
+
+  const updateSuccessPhoneLinks = (value = city()) => {
+    document.querySelectorAll('[data-success-phone]').forEach(link => {
+      link.textContent = cityPhone(value);
+      link.setAttribute('href', phoneHref(value));
+    });
+  };
+
+  const formatRussianPhone = (value) => {
+    let digits = String(value || '').replace(/\D/g, '');
+    if (digits.startsWith('7') || digits.startsWith('8')) digits = digits.slice(1);
+    digits = digits.slice(0, 10);
+    if (!digits) return '';
+
+    let result = '+7 (' + digits.slice(0, 3);
+    if (digits.length < 3) return result;
+    result += ')';
+    if (digits.length === 3) return result;
+    result += ' ' + digits.slice(3, 6);
+    if (digits.length <= 6) return result;
+    result += '-' + digits.slice(6, 8);
+    if (digits.length <= 8) return result;
+    return result + '-' + digits.slice(8, 10);
+  };
+
+  const initPhoneMasks = () => {
+    document.querySelectorAll('input[type="tel"], input[name="phone"]').forEach(input => {
+      input.type = 'tel';
+      input.inputMode = 'tel';
+      input.autocomplete = 'tel';
+      input.maxLength = 18;
+      input.pattern = '\\+7 \\([0-9]{3}\\) [0-9]{3}-[0-9]{2}-[0-9]{2}';
+      input.title = 'Введите номер в формате +7 (999) 123-45-67';
+      input.value = formatRussianPhone(input.value);
+      input.addEventListener('input', () => {
+        input.value = formatRussianPhone(input.value);
+      });
+    });
+  };
+
   const updatePhoneLinks = (value = city()) => {
     document.querySelectorAll('.phone-link').forEach(link => {
       link.textContent = cityPhone(value);
       link.setAttribute('href', phoneHref(value));
     });
+    updateSuccessPhoneLinks(value);
   };
 
   const apiUrl = () => {
@@ -277,12 +362,14 @@
     const form = modal.querySelector('.application-form');
     const success = modal.querySelector('[data-application-success]');
     if (form) form.hidden = isSuccess;
+    modal.querySelectorAll('.modal-form-messenger-link').forEach(link => { link.hidden = isSuccess; });
     if (success) success.hidden = !isSuccess;
   };
 
   const openModal = (payload) => {
     const modal = document.querySelector('[data-application-modal]');
     if (!modal) return;
+    updateSuccessPhoneLinks(payload.city || city());
     setModalSuccess(modal, false);
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
@@ -310,6 +397,49 @@
 
   const closeModal = () => {
     const modal = document.querySelector('[data-application-modal]');
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('no-scroll');
+    document.body.classList.remove('no-scroll');
+  };
+
+  const ensureSuccessModal = () => {
+    if (document.querySelector('[data-success-modal]')) return;
+    document.body.insertAdjacentHTML('beforeend', `
+      <section class="modal" aria-hidden="true" data-success-modal>
+        <div class="modal-backdrop" data-close-success-modal></div>
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
+          <button class="modal-close" type="button" aria-label="Закрыть" data-close-success-modal>×</button>
+          <div class="application-success">
+            <h3 id="success-modal-title">Мы уже получили вашу заявку и начали обработку</h3>
+            <div class="application-success-copy">
+              <p><strong>📞 Позвоним вам в течение 5–15 минут в рабочее время.</strong></p>
+              <p><strong>📵 Просьба временно отключить антиспам и блокировки, чтобы мы могли до вас дозвониться.</strong></p>
+              <p><strong>Если не удалось связаться — напишите нам в удобный мессенджер или перезвоните по телефону: <a class="success-phone-link" data-success-phone></a>.</strong></p>
+            </div>
+            ${maxMessengerLink('modal-messenger-link')}
+            <a class="btn btn-primary" href="/">Вернуться на главный экран</a>
+          </div>
+        </div>
+      </section>
+    `);
+  };
+
+  const openSuccessModal = (value = city()) => {
+    ensureSuccessModal();
+    const modal = document.querySelector('[data-success-modal]');
+    if (!modal) return;
+    updateSuccessPhoneLinks(value);
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('no-scroll');
+    document.body.classList.add('no-scroll');
+    modal.querySelector('.btn[href="/"]')?.focus();
+  };
+
+  const closeSuccessModal = () => {
+    const modal = document.querySelector('[data-success-modal]');
     if (!modal) return;
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
@@ -348,26 +478,6 @@
   };
 
   const initUi = () => {
-    const mobileToggle = document.getElementById('mobileToggle');
-    const mobileNav = document.getElementById('mobileNav');
-
-    if (mobileToggle && mobileNav) {
-      mobileToggle.setAttribute('aria-expanded', 'false');
-      mobileToggle.setAttribute('aria-controls', mobileNav.id || 'mobileNav');
-
-      mobileToggle.addEventListener('click', () => {
-        const isOpen = mobileNav.classList.toggle('open');
-        mobileToggle.setAttribute('aria-expanded', String(isOpen));
-      });
-
-      mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileNav.classList.remove('open');
-          mobileToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
-
     document.querySelectorAll('.city-dropdown').forEach(dropdown => {
       const button = dropdown.querySelector('.city-button');
       const options = dropdown.querySelectorAll('.city-menu button');
@@ -385,10 +495,6 @@
         dropdown.classList.remove('open');
         button.setAttribute('aria-expanded', 'false');
         option.blur();
-        if (mobileNav && mobileToggle) {
-          mobileNav.classList.remove('open');
-          mobileToggle.setAttribute('aria-expanded', 'false');
-        }
         loadTariffs();
       }));
     });
@@ -468,33 +574,30 @@
     });
 
     document.querySelectorAll('[data-close-application]').forEach(button => button.addEventListener('click', closeModal));
+    document.querySelectorAll('[data-close-success-modal]').forEach(button => button.addEventListener('click', closeSuccessModal));
     document.querySelectorAll('.application-form').forEach(form => form.addEventListener('submit', event => {
       event.preventDefault();
       const modal = form.closest('[data-application-modal]');
       if (!modal) return;
-      setModalSuccess(modal, true);
+      updateSuccessPhoneLinks(form.querySelector('[name="city"]')?.value || city());
+      closeModal();
+      openSuccessModal(form.querySelector('[name="city"]')?.value || city());
       form.reset();
     }));
     document.querySelectorAll('.address-check-form').forEach(form => form.addEventListener('submit', event => {
       event.preventDefault();
-      openModal({
-        provider: '',
-        tariff: 'Проверка адреса',
-        price: '',
-        city: city(),
-        tariffType: getPageMode(),
-        category: 'address-check'
-      });
-      const modalForm = document.querySelector('[data-application-modal] .application-form');
-      if (modalForm) {
-        const phoneInput = form.querySelector('[name="phone"]');
-        const modalPhoneInput = modalForm.querySelector('[name="phone"]');
-        if (phoneInput && modalPhoneInput) modalPhoneInput.value = phoneInput.value;
-      }
+      const submittedCity = form.querySelector('[name="city"]')?.value || city();
+      updateSuccessPhoneLinks(submittedCity);
+      openSuccessModal(submittedCity);
+      form.reset();
     }));
     bindApplicationButtons(city(), getPageMode());
     initRevealAnimations();
-    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      closeModal();
+      closeSuccessModal();
+    });
   };
 
   const loadTariffs = async () => {
@@ -565,6 +668,9 @@
     await hydrateCityLandingPage();
     setMode(getPageMode());
     addPersonalDataConsent();
+    ensureMessengerContacts();
+    ensureSuccessModal();
+    initPhoneMasks();
     initUi();
     updatePhoneLinks();
     renderBlog();

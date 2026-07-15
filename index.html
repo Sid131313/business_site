@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Домашний интернет</title>
-  <meta name="description" content="Домашний интернет для квартир и частных домов: проверка адреса, подбор тарифа, Wi-Fi, ТВ и помощь с роутером." />
+  <title>Домашний интернет в Казани — тарифы и подключение</title>
+  <meta name="description" content="Подключение домашнего интернета и ТВ в Казани. Актуальные тарифы, проверка адреса и помощь с выбором провайдера." />
   <link rel="canonical" href="https://inetseti.ru/" />
   <link rel="icon" type="image/svg+xml" href="img/icon/moi-seti-favicon.svg">
   <link rel="stylesheet" href="styles.css">
   <script src="data/blog-posts.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20260715-5" defer></script>
 </head>
 <body>
 
@@ -22,9 +22,8 @@
 
       <nav class="nav" id="mobileNav">
         <a class="nav-business" href="business.html">Для бизнеса</a>
-        <a href="/blog/">Блог</a>
         <div class="city-dropdown">
-          <button class="city-button" type="button" aria-haspopup="true" aria-expanded="false">Москва</button>
+          <button class="city-button" type="button" aria-haspopup="true" aria-expanded="false">Казань</button>
           <div class="city-menu" aria-label="Выбор города">
             <a href="/moskva/">Москва</a>
             <a href="/sankt-peterburg/">Санкт-Петербург</a>
@@ -46,7 +45,6 @@
       <div class="topbar-actions">
         <a class="phone-link" href="tel:+78001234567">8 800 123-45-67</a>
         <a class="btn btn-secondary" href="#address-check">Подключить</a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Открыть меню">☰</button>
       </div>
     </div>
   </header>
@@ -57,7 +55,7 @@
         <div class="hero-card">
           <div class="hero-content">
             
-            <h1>Подключение домашнего интернета для квартир и частных домов</h1>
+            <h1>Домашний интернет в Казани — подключение и тарифы</h1>
             <p class="hero-lead">
               Стабильный интернет для работы, учёбы, фильмов, игр и общения. Проверим адрес,
               подберём подходящую скорость, поможем с роутером и настроим Wi‑Fi для всей семьи.
@@ -108,7 +106,7 @@
       <div class="container address-check">
         <div class="address-check-heading">
           
-          <h2>Узнайте, доступно ли подключение по вашему адресу</h2>
+          <h2>Узнайте, доступно ли подключение в Казани по вашему адресу</h2>
         </div>
 
         <div class="address-check-visual" aria-hidden="true">
@@ -116,7 +114,7 @@
         </div>
 
         <form class="address-check-form">
-          <input type="hidden" name="city" value="Москва" />
+          <input type="hidden" name="city" value="Казань" />
           <label class="field">
             <span>Имя</span>
             <input class="input" type="text" name="name" placeholder="Как к вам обращаться" required />
@@ -154,7 +152,7 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Примеры тарифов</h2>
+            <h2>Тарифы домашнего интернета в Казани</h2>
           </div>
         </div>
 
@@ -433,6 +431,25 @@
     </section>
 
   </main>
+<section class="modal" aria-hidden="true" data-success-modal>
+  <div class="modal-backdrop" data-close-success-modal></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="address-success-title">
+    <button class="modal-close" type="button" aria-label="Закрыть" data-close-success-modal>×</button>
+    <div class="application-success" data-address-check-success>
+      <h3 id="address-success-title">Мы уже получили вашу заявку и начали обработку</h3>
+      <div class="application-success-copy">
+        <p><strong>📞 Позвоним вам в течение 5–15 минут в рабочее время.</strong></p>
+        <p><strong>📵 Просьба временно отключить антиспам и блокировки, чтобы мы могли до вас дозвониться.</strong></p>
+        <p><strong>Если не удалось связаться — напишите нам в удобный мессенджер или перезвоните по телефону: <a class="success-phone-link" data-success-phone></a>.</strong></p>
+      </div>
+      <a class="max-messenger-link modal-messenger-link" href="https://max.ru/u/f9LHodD0cOJbGuUnkNs5vbebn5z8wm-2vX0cb0RUgSHp25MZMmCRiGww1hg" target="_blank" rel="noopener noreferrer" aria-label="Написать в MAX">
+        <img src="img/icon/max.svg" width="32" height="32" alt="MAX">
+        <span>Написать в MAX</span>
+      </a>
+      <a class="btn btn-primary" href="/">Вернуться на главный экран</a>
+    </div>
+  </div>
+</section>
 <section class="modal" aria-hidden="true" data-application-modal>
   <div class="modal-backdrop" data-close-application></div>
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="application-title">
@@ -448,7 +465,7 @@
       <input type="hidden" name="category" value="">
       <label class="field">
         <span>Город</span>
-        <input class="input" type="text" value="Москва" readonly data-current-city>
+        <input class="input" type="text" value="Казань" readonly data-current-city>
       </label>
       <label class="field">
         <span>Имя</span>
@@ -462,15 +479,21 @@
     </form>
     <div class="application-success" hidden data-application-success>
       <h3>Заявка отправлена</h3>
-      <p>Спасибо! Мы скоро свяжемся с вами и подскажем условия подключения в городе <span data-current-city>Москва</span>.</p>
+      <p>Спасибо! Мы скоро свяжемся с вами и подскажем условия подключения в городе <span data-current-city>Казань</span>.</p>
       <button class="btn btn-primary" type="button" data-close-application>Хорошо</button>
     </div>
   </div>
 </section>
 <footer class="footer">
     <div class="container footer-inner">
-      <div>© 2026 ИнетСети. Домашний интернет и цифровые сервисы.</div>
-      <div>Квартиры • Частные дома • ТВ • Wi‑Fi • Поддержка</div>
+      <a class="footer-brand" href="#top" aria-label="ИнетСети — на главную">
+        <img src="img/icon/moi-seti-icon.svg" alt="ИнетСети">
+        <span>ИнетСети</span>
+      </a>
+      <div class="footer-legal">
+        <p>Посещая сайт megafon-connect.ru, вы предоставляете согласие на обработку данных, включая cookies и иные технические данные, на условиях, указанных в <a href="https://megafon-connect.ru/privacy.html#privacy-policy">политике конфиденциальности</a>.</p>
+        <p>Отправляя заявку, пользователь принимает <a href="https://megafon-connect.ru/privacy.html#privacy-policy">политику конфиденциальности</a> и даёт <a href="https://megafon-connect.ru/privacy.html#personal-data-consent">согласие на обработку персональных данных</a>.</p>
+      </div>
     </div>
   </footer>
 

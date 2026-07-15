@@ -6,7 +6,7 @@
   <title>Интернет для бизнеса</title>
   <link rel="icon" type="image/svg+xml" href="img/icon/moi-seti-favicon.svg">
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <script src="script.js?v=20260715-5" defer></script>
 </head>
 <body>
 
@@ -19,7 +19,6 @@
 
       <nav class="nav" id="mobileNav">
         <a class="nav-business" href="index.html">Домашний интернет</a>
-        <a href="/blog/">Блог</a>
         <div class="city-dropdown">
           <button class="city-button" type="button" aria-haspopup="true" aria-expanded="false">Москва</button>
           <div class="city-menu" aria-label="Выбор города">
@@ -43,7 +42,6 @@
       <div class="topbar-actions">
         <a class="phone-link" href="tel:+74959899859">+7 (495) 989-98-59</a>
         <a class="btn btn-secondary" href="#address-check">Подключить</a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Открыть меню">☰</button>
       </div>
     </div>
   </header>
@@ -348,6 +346,25 @@
     </section>
 
   </main>
+  <section class="modal" aria-hidden="true" data-success-modal>
+    <div class="modal-backdrop" data-close-success-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="address-success-title">
+      <button class="modal-close" type="button" aria-label="Закрыть" data-close-success-modal>×</button>
+      <div class="application-success" data-address-check-success>
+        <h3 id="address-success-title">Мы уже получили вашу заявку и начали обработку</h3>
+        <div class="application-success-copy">
+          <p><strong>📞 Позвоним вам в течение 5–15 минут в рабочее время.</strong></p>
+          <p><strong>📵 Просьба временно отключить антиспам и блокировки, чтобы мы могли до вас дозвониться.</strong></p>
+          <p><strong>Если не удалось связаться — напишите нам в удобный мессенджер или перезвоните по телефону: <a class="success-phone-link" data-success-phone></a>.</strong></p>
+        </div>
+        <a class="max-messenger-link modal-messenger-link" href="https://max.ru/u/f9LHodD0cOJbGuUnkNs5vbebn5z8wm-2vX0cb0RUgSHp25MZMmCRiGww1hg" target="_blank" rel="noopener noreferrer" aria-label="Написать в MAX">
+          <img src="img/icon/max.svg" width="32" height="32" alt="MAX">
+          <span>Написать в MAX</span>
+        </a>
+        <a class="btn btn-primary" href="/">Вернуться на главный экран</a>
+      </div>
+    </div>
+  </section>
   <section class="modal" aria-hidden="true" data-application-modal>
     <div class="modal-backdrop" data-close-application></div>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="application-title">
@@ -385,8 +402,14 @@
 
 <footer class="footer">
     <div class="container footer-inner">
-      <div>© 2026 Business Connect. Интернет и сервисы для бизнеса.</div>
-      <div>Офисы • Магазины • Кафе • ПВЗ • Склады</div>
+      <a class="footer-brand" href="index.html#top" aria-label="ИнетСети — на главную">
+        <img src="img/icon/moi-seti-icon.svg" alt="ИнетСети">
+        <span>ИнетСети</span>
+      </a>
+      <div class="footer-legal">
+        <p>Посещая сайт megafon-connect.ru, вы предоставляете согласие на обработку данных, включая cookies и иные технические данные, на условиях, указанных в <a href="https://megafon-connect.ru/privacy.html#privacy-policy">политике конфиденциальности</a>.</p>
+        <p>Отправляя заявку, пользователь принимает <a href="https://megafon-connect.ru/privacy.html#privacy-policy">политику конфиденциальности</a> и даёт <a href="https://megafon-connect.ru/privacy.html#personal-data-consent">согласие на обработку персональных данных</a>.</p>
+      </div>
     </div>
   </footer>
 
